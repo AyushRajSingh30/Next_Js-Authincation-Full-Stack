@@ -1,12 +1,13 @@
+//MongoDB connect required in each file who connect with mongoDB in express We call only one time 
 import { connect } from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
-import { NextResponse, NextRequest } from "next/server";
-import bcryptjs from "bcryptjs";
+import { NextResponse, NextRequest } from "next/server";  //res, req  of express NextResponse, NextRequest for Next js
+import bcryptjs from "bcryptjs";  //similar like bcryptjs 
 import { sendEmail } from "@/helpers/mailer";
 
 connect();
 
-//router function name always declear with http request, POST, get.. etc
+//router function name always declear with http request, POST, GET, PATCH, .. etc
 
 export async function POST(request: NextRequest) {
   try {
