@@ -23,16 +23,24 @@ export async function POST(request: NextRequest) {
     const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(password, salt);
 
+    //newUser.save() work is same User.create()  for creat collectionin mongodb✔️
+
     const newUser = new User({
       username,
       email,
       password: hashedPassword,
     });
 
-    //newUser.save() work is same User.create()
+    //newUser.save() work is same User.create()  for creat collectionin mongodb✔️
     const savedUser = await newUser.save();
     console.log(savedUser);
 
+    //User.create() work properly ✔️
+    // const savedUser = await User.create({
+    //   username,
+    //   email,
+    //   password:hashedPassword
+    // });
     //send verification email
     await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });
 
