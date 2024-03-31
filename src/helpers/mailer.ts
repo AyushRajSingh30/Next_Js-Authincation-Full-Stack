@@ -23,8 +23,10 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
         userId,
 
         {
-          forgetPasswordToken: hashToken,
-          forgetPasswordTokenExpiry: Date.now() + 3600000,
+          $set: {
+            forgetPasswordToken: hashToken,
+            forgetPasswordTokenExpiry: Date.now() + 3600000, //expire in one our now
+          },
         }
       );
     }
