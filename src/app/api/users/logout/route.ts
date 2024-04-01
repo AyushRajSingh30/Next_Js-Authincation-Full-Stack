@@ -15,7 +15,6 @@ export async function GET(request: NextRequest) {
       httpOnly: true,
       expires: new Date(0),
     });
-   
   } catch (error: any) {
     return NextResponse.json(
       { error: error.message },
